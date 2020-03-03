@@ -34,17 +34,18 @@ function mainScreen() {
 }
 //-------------------------------------------------------------------------------------  
 function openModal(event) {
-    //categorySelector();
-    console.log(event.target)
-    modal.style.display = "block";
+   let category = event.srcElement.id
+   console.log(category)
+     if(category === 'cat1'){
+     modal.style.display = "block";
+     }else{
+         alert("coming soon!")
+     }
 }
 function closeModal() {
     modal.style.display = "none";
 }
 
-// function categorySelector(event){
-//     console.log(`You selected ${box.target}`);
-// }
 //-------------------------------------------------------------------------------------  
 function showIt(element) {
     var parent = element.parentNode;
@@ -54,8 +55,15 @@ function cardTiles(showIt) {
     //Shows which item on the grid has been clicked
     let tile = showIt.target
     console.log(tile)
-    shuffleCards();
-    tile.innerHTML = `<img id='num${}' src='${}>`
+    let shuffled = shuffleCards();
+    let image = document.createElement("img");
+    shuffled.forEach((content) => {
+        image.setAttribute('id', `${content.id}`);
+        image.setAttribute('src', `${content.val}.png`);
+    });
+    //console.log(image)
+
+    tile.appendChild(image)
 }
 
 function shuffleCards() {
@@ -70,8 +78,10 @@ function shuffleCards() {
         let returnedCardArray = splitArray.splice(rdmIdx, 1);
         let card = returnedCardArray[0];
         shuffled.push(card)
+        //console.log(shuffled[rdmIdx])
     }
-    shuffled.forEach(content => console.log(content))
+    //console.log(shuffled)
+    return shuffled;
 }
 
 function randomizeCards() {
@@ -81,26 +91,7 @@ function randomizeCards() {
 
 
 mainScreen()
-// randomizeCards()
 /*---------------------Test Area---------------------*/
-
-
-
-//   function shuffleCards(cards) {
-//     let cardsCopy = [].concat(cards);
-//     let shuffled = [];
-//     for (let i = 0; i < cards.length; i++) {
-//       let randomIndex = Math.floor(Math.random() * cardsCopy.length);
-//       let returnedCardArray = cardsCopy.splice(randomIndex, 1);
-//       let card = returnedCardArray[0];
-//       shuffled.push(card);
-//     }
-//     return shuffled;
-//   }
-//   let cards = splitPairs(pairs);
-//   let shuffledCards = shuffleCards(cards);
-//   console.log(cards);
-//   console.log(shuffledCards);
 
 /*---------------------Test Area---------------------*/
 
@@ -122,6 +113,7 @@ mainScreen()
                     //Current objectives
 //1. When a tile is clicked, either a description or image appears in the tile
     // Make sure that the tiles DO NOT repeat themselves
+    // Make sure that both description and image are in the new object array
 //2. If the tiles do not match, they must flip back to the question marks
 
     -----------------Stretch Goals-----------------
