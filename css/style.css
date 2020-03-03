@@ -1,0 +1,74 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Raleway';
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  h1, h2 {
+    text-align: center;
+  }
+  #mainScreen{
+    display: grid;
+    grid-template-columns: repeat(4, 20vmin);
+    grid-template-rows: repeat(2, 20vmin);
+    grid-column-gap: 3vmin;
+    grid-row-gap: 3vmin;
+    padding: 50px 0 50px 0;
+    font-size: 16px;
+  }
+  #mainScreen div {
+    border: 3px solid lightcoral;
+    text-align: center;
+    padding: 55px 0 20px 0;
+    cursor: pointer;
+  }
+  
+  .modal{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    align-items: center;
+    background-color: rgba(0,0,0,0.5);
+  }
+
+  .modal-content{
+    display: grid;
+    background-color: #eee;
+    margin: auto;
+    padding: 20px 0 20px 40px; 
+    width: auto;
+    height: auto;
+    grid-template-columns: repeat(6, 20vmin);
+    grid-template-rows: repeat(4, 20vmin);
+    grid-column-gap: 2vmin;
+    grid-row-gap: 2vmin;
+    justify-content: space-evenly;
+    font-weight: bold;
+    }
+    
+  .modal-content div{
+    border: 3px solid lightblue;
+    text-align: center;
+    cursor: pointer;
+    display: grid;
+    align-items: center;
+    justify-content: space-evenly;
+    
+  }
+
+  div img{
+    max-width:100%;
+    max-height:100%;
+  }
