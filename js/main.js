@@ -35,19 +35,22 @@ const crino = [
 /*----- app's state (variables) -----*/
 let box = document.getElementById("mainScreen")
 let modal = document.getElementById("simpleModal")
-let closeBtn = document.getElementsByClassName('closeBtn')[0];
-let modalContent = document.getElementsByClassName('modal-content')[0];
-var targetDiv = document.querySelector('div');
-let reset = document.querySelector('button')
-
+let closeBtn = document.getElementById('closeBtn');
+let tile = document.querySelectorAll('div')
+//let reset = document.getElementById('reset');
+// let modalContent = document.getElementById('mainscreen');
+// var targetDiv = document.querySelector('div');
+// 
 /*----- cached element references -----*/
-
 
 /*----- event listeners -----*/
 box.addEventListener('click', openModal);
-modalContent.addEventListener('click', cardTiles);
 closeBtn.addEventListener('click', closeModal);
-reset.addEventListener('click', shuffleCards)
+
+//reset.addEventListener('click', shuffleCards);
+//modalContent.addEventListener('click', shuffleCards);
+
+
 
 /*----- functions -----*/
 //-------------------------------------------------------------------------------------  
@@ -57,7 +60,7 @@ function openModal(event) {
     if (category === 'cat1') {
         modal.style.display = "block";
     } else {
-        alert("coming soon!")
+        alert("Coming soon!")
     }
 }
 function innerModal(evt) {
@@ -68,21 +71,24 @@ function closeModal() {
 }
 
 //-------------------------------------------------------------------------------------  
+//This function splits the Crino Object and separates the descriptions from the images
+//And then puts them back together into a single array.
 function splitCards() {
     splitArray = [];
     crino.forEach(pair => {
         splitArray.push({ val: pair.desc, id: pair.id, name: pair.name }),
-            splitArray.push({ val: pair.img, id: pair.id, name: pair.name })
+        splitArray.push({ val: pair.img, id: pair.id, name: pair.name })
     })
     //(let i = 0; i < splitArray.length; i++) 
     //console.log(splitArray)
     return splitArray;
 }
 
+//This function shuffles the previous array into a random order
+//And puts them into a shuffled array.
 function shuffleCards() {
-    shuffled = [];
+    var shuffled = [];
     var i = splitCards().length;
-    //console.log(i)
     while (i > 0) {
         let rdmIdx = Math.floor(Math.random() * i);
         let returnedCardArray = splitArray.splice(rdmIdx, 1);
@@ -90,23 +96,41 @@ function shuffleCards() {
         i -= 1;
         shuffled.push(card)
     }
+    //console.log(shuffled)
     return shuffled;
 }
+//This function should take the previous functions shuffled array
+//And push each object into an image tag
+//everytime you click on a div and one to the index and continue along the line of the array.
 
-// function cardTiles() {
+function pushTag(){
+    let tagged = []
+    cards = shuffleCards();
+    let image = document.createElement("img");
+    cards.forEach((card) => {
+        image.setAttribute('id', `${card.id}`);
+        image.setAttribute('name', `${card.name}`);
+        image.setAttribute('src', `${card.val}.png`);
+    })
+    tagged.push(image)
+    console.log(tagged)
+}
+
+pushTag()
+    // 
+       
+    // };
+    
+//This function should take the tags created 
+//and push them into the div tag that's clicked by the player
+
+// function insertContent(evt) {
+//     var child = evt.target
 //     var cards = shuffleCards()
-//     let image = document.createElement("img");
-//     cards.forEach(function (content) {
-//         image.setAttribute('id', `${content.id}`);
-//         image.setAttribute('name', `${content.name}`);
-//         image.setAttribute('src', `${content.val}.png`);
-//     });
-    //console.log(image)
-// }
+//     console.log(cards)
+
 //     //Shows which item on the grid has been clicked
-//     let child = evt.target;
-//     //console.log(child)
-//     let shuffled = shuffleCards();
+//     //console.log(child);
 //     //console.log(shuffled)
 //     let image = document.createElement("img");
 //     shuffled.forEach(function (content) {
@@ -114,8 +138,10 @@ function shuffleCards() {
 //         image.setAttribute('name', `${content.name}`);
 //         image.setAttribute('src', `${content.val}.png`);
 //     });
-//     // pop the first or last element and set that to the image. And then also remove img from the array
 //     child.appendChild(image)
+// }
+//     // pop the first or last element and set that to the image. And then also remove img from the array
+
 //     let imageId = image.getAttribute('id')
 //     console.log(image)
 //     //console.log(imageId)
