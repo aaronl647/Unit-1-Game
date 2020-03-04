@@ -16,46 +16,44 @@ const crino = [
     { name: 'empress-eugenie', desc: 'https://imgur.com/TJcUhSw', img: 'https://imgur.com/seFJbE5', id: 12 },
     { name: 'frock-coat', desc: 'https://imgur.com/60DFluQ', img: 'https://imgur.com/fOWadta', id: 13 },
     { name: 'interchangeable-bodices', desc: 'https://imgur.com/kAxam9x', img: 'https://imgur.com/Dj02C34', id: 14 },
-    { name: 'knickerbockers', desc: 'https://imgur.com/mJ8zysx', img: 'https://imgur.com/OV67tuM', id: 15 },
-    { name: 'mitts', desc: 'https://imgur.com/piLf7WQ', img: 'https://imgur.com/IjOTlUK', id: 16 },
-    { name: 'morning-coat', desc: 'https://imgur.com/DEDbHy1', img: 'https://imgur.com/nk7xcLo', id: 17 },
-    { name: 'photography', desc: 'https://imgur.com/komvDPb', img: 'https://imgur.com/9Y8KWWe', id: 18 },
-    { name: 'risk-of-fire', desc: 'https://imgur.com/WnVKf7E', img: 'https://imgur.com/QJlRZiS', id: 19 },
-    { name: 'sack-jacket', desc: 'https://imgur.com/DaeVqYp', img: 'https://imgur.com/0GJrvLB', id: 20 },
-    { name: 'sewing-machine', desc: 'https://imgur.com/iAsSHLu', img: 'https://imgur.com/uvkh5Pk', id: 21 },
-    { name: 'spoon-bonnet', desc: 'https://imgur.com/aW1GUjl', img: 'https://imgur.com/H3U6Fac', id: 22 },
-    { name: 'the-great-exhibition', desc: 'https://imgur.com/JI9Hb4a', img: 'https://imgur.com/VKLnhSd', id: 23 },
-    { name: 'trousers', desc: 'https://imgur.com/Oq9H2Uf', img: 'https://imgur.com/iJX4IgJ', id: 24 },
-    { name: 'wm-under', desc: 'https://imgur.com/6CcmWcQ', img: 'https://imgur.com/mGVrJVT', id: 25 },
-    { name: 'womens-day-dress', desc: 'https://imgur.com/eldiMtt', img: 'https://imgur.com/MPWp2n4', id: 26 },
-    { name: 'womens-dress', desc: 'https://imgur.com/SJNWBu3', img: 'https://imgur.com/6SBouPw', id: 27 },
-    { name: 'womens-evening-dress', desc: 'https://imgur.com/XMMlhqY', img: 'https://imgur.com/8Jde8J5', id: 28 },
-    { name: 'womens-hair', desc: 'https://imgur.com/8QQyJj1', img: 'https://imgur.com/GzEIb6O', id: 29 },
+    // { name: 'knickerbockers', desc: 'https://imgur.com/mJ8zysx', img: 'https://imgur.com/OV67tuM', id: 15 },
+    // { name: 'mitts', desc: 'https://imgur.com/piLf7WQ', img: 'https://imgur.com/IjOTlUK', id: 16 },
+    // { name: 'morning-coat', desc: 'https://imgur.com/DEDbHy1', img: 'https://imgur.com/nk7xcLo', id: 17 },
+    // { name: 'photography', desc: 'https://imgur.com/komvDPb', img: 'https://imgur.com/9Y8KWWe', id: 18 },
+    // { name: 'risk-of-fire', desc: 'https://imgur.com/WnVKf7E', img: 'https://imgur.com/QJlRZiS', id: 19 },
+    // { name: 'sack-jacket', desc: 'https://imgur.com/DaeVqYp', img: 'https://imgur.com/0GJrvLB', id: 20 },
+    // { name: 'sewing-machine', desc: 'https://imgur.com/iAsSHLu', img: 'https://imgur.com/uvkh5Pk', id: 21 },
+    // { name: 'spoon-bonnet', desc: 'https://imgur.com/aW1GUjl', img: 'https://imgur.com/H3U6Fac', id: 22 },
+    // { name: 'the-great-exhibition', desc: 'https://imgur.com/JI9Hb4a', img: 'https://imgur.com/VKLnhSd', id: 23 },
+    // { name: 'trousers', desc: 'https://imgur.com/Oq9H2Uf', img: 'https://imgur.com/iJX4IgJ', id: 24 },
+    // { name: 'wm-under', desc: 'https://imgur.com/6CcmWcQ', img: 'https://imgur.com/mGVrJVT', id: 25 },
+    // { name: 'womens-day-dress', desc: 'https://imgur.com/eldiMtt', img: 'https://imgur.com/MPWp2n4', id: 26 },
+    // { name: 'womens-dress', desc: 'https://imgur.com/SJNWBu3', img: 'https://imgur.com/6SBouPw', id: 27 },
+    // { name: 'womens-evening-dress', desc: 'https://imgur.com/XMMlhqY', img: 'https://imgur.com/8Jde8J5', id: 28 },
+    // { name: 'womens-hair', desc: 'https://imgur.com/8QQyJj1', img: 'https://imgur.com/GzEIb6O', id: 29 },
 ];
 /*----- app's state (variables) -----*/
-
-/*----- cached element references -----*/
 let box = document.getElementById("mainScreen")
 let modal = document.getElementById("simpleModal")
 let closeBtn = document.getElementsByClassName('closeBtn')[0];
-let modalContent = document.getElementsByClassName('modal-content')[0]
+let modalContent = document.getElementsByClassName('modal-content')[0];
 var targetDiv = document.querySelector('div');
+let reset = document.querySelector('button')
+
+/*----- cached element references -----*/
 
 
 /*----- event listeners -----*/
 box.addEventListener('click', openModal);
 modalContent.addEventListener('click', cardTiles);
 closeBtn.addEventListener('click', closeModal);
-targetDiv.addEventListener('click', cardTiles);
+reset.addEventListener('click', shuffleCards)
 
 /*----- functions -----*/
-// function mainScreen() {
-//     console.log("o hai dere")
-// }
 //-------------------------------------------------------------------------------------  
 function openModal(event) {
     let category = event.srcElement.id
-    console.log(category)
+    //console.log(category)
     if (category === 'cat1') {
         modal.style.display = "block";
     } else {
@@ -70,45 +68,92 @@ function closeModal() {
 }
 
 //-------------------------------------------------------------------------------------  
-function shuffleCards() {
-    let splitArray = [];
-    let shuffled = [];
+function splitCards() {
+    splitArray = [];
     crino.forEach(pair => {
-        splitArray.push({ val: pair.desc, id: pair.id }),
-            splitArray.push({ val: pair.img, id: pair.id })
+        splitArray.push({ val: pair.desc, id: pair.id, name: pair.name }),
+            splitArray.push({ val: pair.img, id: pair.id, name: pair.name })
     })
-    //  console.log(splitArray)
-    for (let i = 0; i < splitArray.length; i++) {
-        let rdmIdx = Math.floor(Math.random() * splitArray.length);
+    //(let i = 0; i < splitArray.length; i++) 
+    //console.log(splitArray)
+    return splitArray;
+}
+
+function shuffleCards() {
+    shuffled = [];
+    var i = splitCards().length;
+    //console.log(i)
+    while (i > 0) {
+        let rdmIdx = Math.floor(Math.random() * i);
         let returnedCardArray = splitArray.splice(rdmIdx, 1);
-        let card = returnedCardArray[0];
+        var card = returnedCardArray[0];
+        i -= 1;
         shuffled.push(card)
     }
-    //console.log(shuffled)
     return shuffled;
 }
 
-function cardTiles(evt) {
-    //Shows which item on the grid has been clicked
-    let child = evt.target;
-    let shuffled = shuffleCards();
-    let image = document.createElement("img");
-    shuffled.forEach((content) => {
-        image.setAttribute('id', `${content.id}`);
-        image.setAttribute('src', `${content.val}.png`);
-    });
-    child.appendChild(image)
-    let imageId = image.getAttribute('id')
-    return imageId;
-}
+// function cardTiles() {
+//     var cards = shuffleCards()
+//     let image = document.createElement("img");
+//     cards.forEach(function (content) {
+//         image.setAttribute('id', `${content.id}`);
+//         image.setAttribute('name', `${content.name}`);
+//         image.setAttribute('src', `${content.val}.png`);
+//     });
+    //console.log(image)
+// }
+//     //Shows which item on the grid has been clicked
+//     let child = evt.target;
+//     //console.log(child)
+//     let shuffled = shuffleCards();
+//     //console.log(shuffled)
+//     let image = document.createElement("img");
+//     shuffled.forEach(function (content) {
+//         image.setAttribute('id', `${content.id}`);
+//         image.setAttribute('name', `${content.name}`);
+//         image.setAttribute('src', `${content.val}.png`);
+//     });
+//     // pop the first or last element and set that to the image. And then also remove img from the array
+//     child.appendChild(image)
+//     let imageId = image.getAttribute('id')
+//     console.log(image)
+//     //console.log(imageId)
 
-function getMatch(cardTiles) {
+// tile1 = imageId;
+// tile2 = imageId;
+// console.log(tile1)
 
-}
+// let footer = document.getElementsByTagName('footer');
+// footer = footer.
+// console.log(footer)
+//     if(true){
+//         footer.innerText = "It's a match!"
+//     }
+// }
 
-// shuffleCards();
+// cardTiles()
+//splitCards()
+
 // mainScreen()
 /*---------------------Test Area---------------------*/
+/*
+ var uniqueRandoms = [];
+    // refill the array if needed
+    if (!uniqueRandoms.length) {
+        for (var i = 0; i < splitArray.length; i++) {
+            uniqueRandoms.push(i);
+        }
+    }
+    //console.log(uniqueRandoms)
+    let index = Math.floor(Math.random() * uniqueRandoms.length);
+    let val = uniqueRandoms[index];
+    // now remove that value from the array
+    uniqueRandoms.splice(index, 1);
+    //console.log(val)
+    //console.log(uniqueRandoms)
+    return val;
+*/
 
 /*---------------------Test Area---------------------*/
 
@@ -133,6 +178,7 @@ function getMatch(cardTiles) {
     // Make sure that both description and image are in the new object array
 //use the id key to identify that the two tiles match each
 //2. If the tiles do not match, they must flip back to the question marks
+    - Only 2 tiles can be pressed at a time.
 
     -----------------Stretch Goals-----------------
     - When the tile is pressed the photo will increase in size

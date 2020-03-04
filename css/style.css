@@ -51,7 +51,7 @@
     width: auto;
     height: auto;
     grid-template-columns: repeat(6, 15vmin);
-    grid-template-rows: repeat(5, 15vmin);
+    grid-template-rows: repeat(6, 15vmin);
     grid-column-gap: 2vmin;
     grid-row-gap: 2vmin;
     justify-content: space-evenly;
@@ -71,4 +71,15 @@
   div img{
     max-width:100%;
     max-height:100%;
+  }
+
+  footer{
+    text-align: center;
+    justify-content: flex-end;
+    display: flex ;
+  }
+
+  button{
+    justify-content: flex-end;
+    display: flex;
   }
