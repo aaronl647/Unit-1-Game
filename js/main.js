@@ -37,15 +37,16 @@ const crino = [
 /*----- cached element references -----*/
 let box = document.getElementById("mainScreen")
 let modal = document.getElementById("simpleModal")
-//let modalBtn = document.getElementById("mainScreen")
 let closeBtn = document.getElementsByClassName('closeBtn')[0];
 let modalContent = document.getElementsByClassName('modal-content')[0]
-var targetDiv = document.getElementsByClassName('modal-content');
+var targetDiv = document.querySelector('div');
+
 
 /*----- event listeners -----*/
 box.addEventListener('click', openModal);
 modalContent.addEventListener('click', cardTiles);
 closeBtn.addEventListener('click', closeModal);
+targetDiv.addEventListener('click', cardTiles);
 
 /*----- functions -----*/
 // function mainScreen() {
@@ -61,28 +62,14 @@ function openModal(event) {
         alert("coming soon!")
     }
 }
+function innerModal(evt) {
+    modal.style.display = "block";
+}
 function closeModal() {
     modal.style.display = "none";
 }
 
 //-------------------------------------------------------------------------------------  
-function showIt(element) {
-    var parent = element.parentNode;
-    var content = parent.querySelector("div");
-}
-function cardTiles(showIt) {
-    //Shows which item on the grid has been clicked
-    let tile = showIt.target
-    console.log(tile)
-    let shuffled = shuffleCards();
-    let image = document.createElement("img");
-    shuffled.forEach((content) => {
-        image.setAttribute('id', `${content.id}`);
-        image.setAttribute('src', `${content.val}.png`);
-    });
-    tile.appendChild(image)
-}
-
 function shuffleCards() {
     let splitArray = [];
     let shuffled = [];
@@ -97,12 +84,26 @@ function shuffleCards() {
         let card = returnedCardArray[0];
         shuffled.push(card)
     }
+    //console.log(shuffled)
     return shuffled;
 }
 
-function randomizeCards() {
-    let randomCards = [];
-    getCards()
+function cardTiles(evt) {
+    //Shows which item on the grid has been clicked
+    let child = evt.target;
+    let shuffled = shuffleCards();
+    let image = document.createElement("img");
+    shuffled.forEach((content) => {
+        image.setAttribute('id', `${content.id}`);
+        image.setAttribute('src', `${content.val}.png`);
+    });
+    child.appendChild(image)
+    let imageId = image.getAttribute('id')
+    return imageId;
+}
+
+function getMatch(cardTiles) {
+
 }
 
 // shuffleCards();
@@ -127,11 +128,14 @@ function randomizeCards() {
         when the player guesses wrong, the tile
 
                     //Current objectives
-//1. When a tile is clicked, either a description or image appears in the tile
+//Use the id key to make sure that the images and descriptions are both included in the randomization
     // Make sure that the tiles DO NOT repeat themselves
     // Make sure that both description and image are in the new object array
+//use the id key to identify that the two tiles match each
 //2. If the tiles do not match, they must flip back to the question marks
 
     -----------------Stretch Goals-----------------
-    -
+    - When the tile is pressed the photo will increase in size
+        - when you click on the image again it will minimize
+
 */
