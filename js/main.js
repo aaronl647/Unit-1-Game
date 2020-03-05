@@ -36,23 +36,15 @@ const crino = [
 let box = document.getElementById("mainScreen")
 let modal = document.getElementById("simpleModal")
 let closeBtn = document.getElementById('closeBtn');
-// let tile = document.querySelectorAll('div')
 let reset = document.getElementById('reset');
 let tile = document.getElementById('modal-content')
-//let reset = document.getElementById('reset');
-// let modalContent = document.getElementById('mainscreen');
-// var targetDiv = document.querySelector('div');
-// 
+
 /*----- cached element references -----*/
 
 /*----- event listeners -----*/
 box.addEventListener('click', openModal);
 closeBtn.addEventListener('click', closeModal);
 reset.addEventListener('click', shuffleCards)
-//tile.addEventListener('click', imageChange);
-
-//reset.addEventListener('click', shuffleCards);
-//modalContent.addEventListener('click', shuffleCards);
 
 
 
@@ -83,8 +75,6 @@ function splitCards() {
         splitArray.push({ val: pair.desc, id: pair.id, name: pair.name }),
             splitArray.push({ val: pair.img, id: pair.id, name: pair.name })
     })
-    //(let i = 0; i < splitArray.length; i++) 
-    //console.log(splitArray)
     return splitArray;
 }
 
@@ -100,67 +90,61 @@ function shuffleCards(click) {
         i -= 1;
         shuffled.push(card)
     }
-    //console.log(shuffled)
     return shuffled;
 }
 //This function should take the previous functions shuffled array
 //And push each object into an image tag
-function pushTag() {
-    let cards = shuffleCards();
-    //console.log(cards)
-    let tagged = [];
-    cards.forEach(function(card) {
-        var img = document.createElement('img')
-        img.id = card.id;
-        img.setAttribute('name', `${card.name}`);
-        img.setAttribute('src', `${card.val}.png`);
-        tagged.push(img)
-        //console.log(img)
-    });
-    //console.log(tagged)
-    return tagged
-    //console.log(tagged)
-}
-//pushTag()
-
-// image = `<div>
-// <img name="${card.name}" id="${card.id}" src="${card.val}.png">
-// </div> `
-
 //This function should take the tags created 
 //and be stored in each of the divs in the grid
-function pushImage() {
-    var contents = pushTag();
-    console.log(contents)
-    contents.forEach(function(content){
-        var modalContainer = document.getElementsByClassName('container')
-        modalContainer.appendChild(content)
-        console.log(modalContainer);
-    })
-   return modalContainer; 
+function pushTag() {
+    let cards = shuffleCards();
+    var modalContainer = document.querySelectorAll('.container');
+    cards.forEach(function (card, idx) {
+        var img = document.createElement('img')
+        //img.setAttribute('id', `img${card.id}`);
+        img.setAttribute('name', `${card.name}`);
+        img.setAttribute('src', `${card.val}.png`);
+        modalContainer[idx].appendChild(img);
+    });
+    return;
 }
-pushImage();
-// function flipTile() {
-//     let content = imagePush();
-//     console.log(content)
-//     let toggle = false;
-//     let img = document.getElementsByTagName('img')
-//console.log(img)
-// img.style.visibility = 'hidden';
-// img.addEventListener('click', function (evt) {
-//     if (!toggle) {
-//         img.style.visibility = 'visible';
-//     } else {
-//         img.style.visibility = 'hidden';
+pushTag()
 
-//     }
-// })
-// }
-// flipTile()
-function getMatch() {
+    // let click = document.getElementbyId('')
+    // console.log(click)
+    // //click.addEventListener('click', getMatch)
+    // function getMatch(event) {
+    //     var img = document.getElementById('myImageId');
+    //     img.style.visibility = 'visible';
 
-}
+    // }
 
+
+//getMatch()
+    //pushImage();
+    // function flipTile() {
+    //     let content = imagePush();
+    //     console.log(content)
+    //     let toggle = false;
+    //     let img = document.getElementsByTagName('img')
+    //console.log(img)
+    // img.style.visibility = 'hidden';
+    // img.addEventListener('click', function (evt) {
+    //     if (!toggle) {
+    //         img.style.visibility = 'visible';
+    //     } else {
+    //         img.style.visibility = 'hidden';
+
+    //     }
+    // })
+    // }
+    // flipTile()
+    //The player should be able to click on only 2 tiles every turn.  
+    //If the image does not match the description, the game will notify the player
+    //that they didn't get a match
+    //If the player gets a match, the game will notify the player that they got a match
+    //The tiles will be hidden from the board.
+ 
 //     // pop the first or last element and set that to the image. And then also remove img from the array
 
 //     let imageId = image.getAttribute('id')
@@ -179,28 +163,8 @@ function getMatch() {
 //     }
 // }
 
-// cardTiles()
-//splitCards()
-
-// mainScreen()
 /*---------------------Test Area---------------------*/
-/*
- var uniqueRandoms = [];
-    // refill the array if needed
-    if (!uniqueRandoms.length) {
-        for (var i = 0; i < splitArray.length; i++) {
-            uniqueRandoms.push(i);
-        }
-    }
-    //console.log(uniqueRandoms)
-    let index = Math.floor(Math.random() * uniqueRandoms.length);
-    let val = uniqueRandoms[index];
-    // now remove that value from the array
-    uniqueRandoms.splice(index, 1);
-    //console.log(val)
-    //console.log(uniqueRandoms)
-    return val;
-*/
+
 
 /*---------------------Test Area---------------------*/
 
