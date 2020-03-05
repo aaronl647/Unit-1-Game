@@ -36,7 +36,9 @@ const crino = [
 let box = document.getElementById("mainScreen")
 let modal = document.getElementById("simpleModal")
 let closeBtn = document.getElementById('closeBtn');
-let tile = document.querySelectorAll('div')
+// let tile = document.querySelectorAll('div')
+let reset = document.getElementById('reset');
+let tile = document.getElementById('modal-content')
 //let reset = document.getElementById('reset');
 // let modalContent = document.getElementById('mainscreen');
 // var targetDiv = document.querySelector('div');
@@ -46,6 +48,8 @@ let tile = document.querySelectorAll('div')
 /*----- event listeners -----*/
 box.addEventListener('click', openModal);
 closeBtn.addEventListener('click', closeModal);
+reset.addEventListener('click', shuffleCards)
+//tile.addEventListener('click', imageChange);
 
 //reset.addEventListener('click', shuffleCards);
 //modalContent.addEventListener('click', shuffleCards);
@@ -77,7 +81,7 @@ function splitCards() {
     splitArray = [];
     crino.forEach(pair => {
         splitArray.push({ val: pair.desc, id: pair.id, name: pair.name }),
-        splitArray.push({ val: pair.img, id: pair.id, name: pair.name })
+            splitArray.push({ val: pair.img, id: pair.id, name: pair.name })
     })
     //(let i = 0; i < splitArray.length; i++) 
     //console.log(splitArray)
@@ -86,7 +90,7 @@ function splitCards() {
 
 //This function shuffles the previous array into a random order
 //And puts them into a shuffled array.
-function shuffleCards() {
+function shuffleCards(click) {
     var shuffled = [];
     var i = splitCards().length;
     while (i > 0) {
@@ -101,28 +105,69 @@ function shuffleCards() {
 }
 //This function should take the previous functions shuffled array
 //And push each object into an image tag
-//everytime you click on a div and one to the index and continue along the line of the array.
-
-function pushTag(){
-    let tagged = []
+function pushTag() {
     cards = shuffleCards();
-    let image = document.createElement("img");
-    cards.forEach((card) => {
-        image.setAttribute('id', `${card.id}`);
-        image.setAttribute('name', `${card.name}`);
-        image.setAttribute('src', `${card.val}.png`);
-    })
-    tagged.push(image)
-    console.log(tagged)
+    tagged = [];
+    cards.forEach(function (card) {
+        image = `<div>
+        <img name="${card.name}" id="${card.id}" src="${card.val}.png">
+        </div> `
+        //console.log(image);
+        tagged.push(image)
+    });
+    //console.log(tagged)
+    return tagged;
+}
+//This function should take the tags created 
+//and be stored in each of the divs in the grid
+function imagePush() {
+    var finalArray = pushTag();
+    //console.log(finalArray)
+    for (let i = 0; i < 30; i++) {
+        document.getElementById("modal-content").innerHTML += finalArray[i];
+    }
+}
+imagePush();
+
+function flipTile() {
+    content = imagePush();
+    console.log(content)
+    let toggle = false;
+    let img = document.getElementsByTagName('img')
+    //console.log(img)
+    // img.style.visibility = 'hidden';
+    // img.addEventListener('click', function (evt) {
+    //     if (!toggle) {
+    //         img.style.visibility = 'visible';
+    //     } else {
+    //         img.style.visibility = 'hidden';
+
+    //     }
+    // })
+}
+// flipTile()
+function getMatch() {
+
 }
 
-pushTag()
-    // 
-       
-    // };
-    
-//This function should take the tags created 
-//and push them into the div tag that's clicked by the player
+//`<img name="${card.name}" id="${card.id}" src="${card.val}"> `
+
+// for(let i = 0; i< content.length; i++){
+//     while(clickedDiv ===true){
+//         clickedDiv.innerHTML(content)
+//         console.log('hello')
+
+
+/*
+let image = document.createElement("img");
+cards.forEach((card) => {
+console.log(card)
+image.setAttribute('id', `${card.id}`);
+image.setAttribute('name', `${card.name}`);
+image.setAttribute('src', `${card.val}.png`);
+})
+*/
+
 
 // function insertContent(evt) {
 //     var child = evt.target
