@@ -9,10 +9,9 @@
 6. The objective of the game is to match all the tiles together.
 
 ## Screenshots
-![Home Screen][Image1]
-![Game Screen][Image2]
-[Image 1]:https://imgur.com/5V6YiDP.png "Home Screen"
-[Image 2]:https://imgur.com/3puWbO9.png "Game Screen"
+[Home Screen](https://imgur.com/5V6YiDP.png "Home Screen")
+[Game Screen](https://imgur.com/3puWbO9.png "Game Screen")
+
 
 ## Technologies Used
 * HTML
