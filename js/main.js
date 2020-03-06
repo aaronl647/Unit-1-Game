@@ -32,25 +32,23 @@ const crino = [
     // { name: 'womens-evening-dress', desc: 'https://imgur.com/XMMlhqY', img: 'https://imgur.com/8Jde8J5', id: 28 },
     // { name: 'womens-hair', desc: 'https://imgur.com/8QQyJj1', img: 'https://imgur.com/GzEIb6O', id: 29 },
 ];
+var savedFlip = [];
 let backBlock = 'images/pixel-block.png'
 /*----- app's state (variables) -----*/
 let modal = document.getElementById("simpleModal")
-//let tile = document.getElementById('modal-content')
 
 /*----- cached element references -----*/
 var cards = splitCards();
-//console.log(cards)
 /*----- event listeners -----*/
 let box = document.getElementById("mainScreen").addEventListener('click', openModal);
 let closeBtn = document.getElementById('closeBtn').addEventListener('click', closeModal);
-document.getElementById('modal-content').addEventListener('click', flipTiles)
 document.getElementById('reset').addEventListener('click', shuffleCards)
-//document.querySelector('.reset').addEventListener('click', shuffleCards)
+let h3 = document.getElementById('third')
+let score = document.getElementById('score')
 /*----- functions -----*/
 //-------------------------------------------------------------------------------------  
 function openModal(event) {
     let category = event.srcElement.id
-    //console.log(category)
     if (category === 'cat1') {
         modal.style.display = "block";
     } else {
@@ -78,7 +76,7 @@ function splitCards() {
 
 //This function shuffles the previous array into a random order
 //And puts them into a shuffled array.
-function shuffleCards(click) {
+function shuffleCards() {
     //console.log('YEET')
     var shuffled = [];
     var i = splitCards().length;
@@ -89,13 +87,16 @@ function shuffleCards(click) {
         i -= 1;
         shuffled.push(card)
     }
+    //console.log(shuffled)
     return shuffled;
 }
+// shuffleCards()
 //This function should take the previous functions shuffled array
 //And push each object into an image tag
 //This function should take the tags created 
 //and be stored in each of the divs in the grid
 function pushTag() {
+    var cards = shuffleCards();
     let pushImages = [];
     var modalContainer = document.querySelectorAll('.container');
     cards.forEach(function (card, idx) {
@@ -103,42 +104,51 @@ function pushTag() {
         img.id = card.id;
         img.setAttribute('name', `${card.name}`);
         img.setAttribute('src', `${card.val}.png`);
+        //img.style.display = "none";
         modalContainer[idx].appendChild(img);
         pushImages.push(img)
     });
+    //add event listen to the image have it point to a new function flipcard
+    //flip card function should get the elements id 
+    //use the id to look into the cards variable
+    //needs a global variable to hold what has been clicked 
+    //needs to match global variable with the array
+    //document.getElementsByClassName('.container').addEventListener('click', cardCheck)
     //console.log(pushImages)
     return modalContainer;
 }
-
-function flipTiles(event){
-    var content = pushTag();
-    let flip = event.target;
-    let clickCheck = false;
-    console.log(flip)
-    // for(let i = 0; i < content.length; i++){
-    //     if(!clickCheck){
-    //         console.log('hello')
-    //     }else{
-    //         console.log('nope')
-    //     }
-    // }
-    
-    
-    //every time the user clicks either a photo or a description will replace the contents
-    //inside the div box. 
+console.log(pushTag()[0])
+for (let i = 0; i < 30; i++) {
+    document.getElementById(`${i}`).addEventListener("click", cardCheck);
 }
 
+function cardCheck(event) {
+    let click = event.target;
+    const guess = parseInt(click.id.replace('img', '')) || parseInt(click.id.replace('desc', ''));
+    console.log(guess)
+    savedFlip.push(guess)
+    console.log(savedFlip)
 
-// function flipTiles(event){
-// let tileChange = event.target;
-// console.log(tileChange)
-// }
-// document.getElementsByClassName('.container').addEventListener("click", getMatch)
-// function getMatch(evt){
-// let click = evt.target;
-// console.log(click)
-
-// }
+        if(savedFlip[0]===savedFlip[1]){
+        h3.innerText = "It's a match!";
+        score += num+1
+        savedFlip = []
+    }else{
+        h3.innerText = "Try Again.";
+    }
+    //change css to show the image
+    //get element id
+    //if first card flipped 
+    //save element to global
+    //else
+    //use this element id and global var to look into cards array to check if there's a match
+    //else 
+    //flip both cards 
+    //(using this element id and the last element id saved in global variable)
+}
+//every time the user clicks either a photo or a description will replace the contents
+//inside the div box. 
+cardCheck()
 //getMatch()
 //The player should be able to click on only 2 tiles every turn.  
 //If the image does not match the description, the game will notify the player

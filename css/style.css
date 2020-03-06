@@ -60,11 +60,11 @@
     
   #modal-content div{
     border: 3px solid lightblue;
-    background-color: orange;
+    /* background-color: orange; */
     text-decoration-color: white;
     font-size: 45px;
     text-align: center;
-    cursor: pointer;
+    cursor: pointer;  
     display: grid;
     align-items: center;
     justify-content: space-evenly;
@@ -85,4 +85,14 @@
   button{
     justify-content: flex-end;
     display: flex;
+  }
+
+  div#hidden{
+    border: 3px solid #eee;
+  }
+
+  h3{
+   display: flex;
+   justify-content: center;
+   align-content: center;
   }
