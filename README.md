@@ -10,5 +10,5 @@
 
 # Screenshots
 
-[Image 1](https://imgur.com/5V6YiDP)
-[Image 2](https://imgur.com/3puWbO9)
+[Image 1]:(https://imgur.com/5V6YiDP)
+[Image 2]:(https://imgur.com/3puWbO9)
