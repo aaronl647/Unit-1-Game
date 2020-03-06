@@ -33,19 +33,15 @@ const crino = [
     // { name: 'womens-hair', desc: 'https://imgur.com/8QQyJj1', img: 'https://imgur.com/GzEIb6O', id: 29 },
 ];
 /*----- app's state (variables) -----*/
-let box = document.getElementById("mainScreen")
 let modal = document.getElementById("simpleModal")
-let closeBtn = document.getElementById('closeBtn');
-let reset = document.getElementById('reset');
-let tile = document.getElementById('modal-content')
+//let tile = document.getElementById('modal-content')
 
 /*----- cached element references -----*/
-
+let index = 0;
 /*----- event listeners -----*/
-box.addEventListener('click', openModal);
-closeBtn.addEventListener('click', closeModal);
-reset.addEventListener('click', shuffleCards)
-
+let box = document.getElementById("mainScreen").addEventListener('click', openModal);
+let closeBtn = document.getElementById('closeBtn').addEventListener('click', closeModal);
+let reset = document.getElementById('reset').addEventListener('click', shuffleCards)
 
 
 /*----- functions -----*/
@@ -72,8 +68,8 @@ function closeModal() {
 function splitCards() {
     splitArray = [];
     crino.forEach(pair => {
-        splitArray.push({ val: pair.desc, id: pair.id, name: pair.name }),
-            splitArray.push({ val: pair.img, id: pair.id, name: pair.name })
+        splitArray.push({ val: pair.desc, id: `desc${pair.id}`, name: pair.name }),
+            splitArray.push({ val: pair.img, id: `img${pair.id}`, name: pair.name })
     })
     return splitArray;
 }
@@ -101,67 +97,31 @@ function pushTag() {
     var modalContainer = document.querySelectorAll('.container');
     cards.forEach(function (card, idx) {
         var img = document.createElement('img')
-        //img.setAttribute('id', `img${card.id}`);
+        img.id = card.id;
         img.setAttribute('name', `${card.name}`);
         img.setAttribute('src', `${card.val}.png`);
         modalContainer[idx].appendChild(img);
+        //console.log(img)
     });
-    return;
+    //console.log(modalContainer)
+    return modalContainer;
 }
 pushTag()
 
-    // let click = document.getElementbyId('')
-    // console.log(click)
-    // //click.addEventListener('click', getMatch)
-    // function getMatch(event) {
-    //     var img = document.getElementById('myImageId');
-    //     img.style.visibility = 'visible';
-
-    // }
+//The player should be able to click on only 2 tiles every turn.  
+//If the image does not match the description, the game will notify the player
+//that they didn't get a match
+//If the player gets a match, the game will notify the player that they got a match
+//The tiles will be hidden from the board.
 
 
-//getMatch()
-    //pushImage();
-    // function flipTile() {
-    //     let content = imagePush();
-    //     console.log(content)
-    //     let toggle = false;
-    //     let img = document.getElementsByTagName('img')
-    //console.log(img)
-    // img.style.visibility = 'hidden';
-    // img.addEventListener('click', function (evt) {
-    //     if (!toggle) {
-    //         img.style.visibility = 'visible';
-    //     } else {
-    //         img.style.visibility = 'hidden';
 
-    //     }
-    // })
-    // }
-    // flipTile()
-    //The player should be able to click on only 2 tiles every turn.  
-    //If the image does not match the description, the game will notify the player
-    //that they didn't get a match
-    //If the player gets a match, the game will notify the player that they got a match
-    //The tiles will be hidden from the board.
- 
+
 //     // pop the first or last element and set that to the image. And then also remove img from the array
 
-//     let imageId = image.getAttribute('id')
-//     console.log(image)
-//     //console.log(imageId)
 
-// tile1 = imageId;
-// tile2 = imageId;
-// console.log(tile1)
 
-// let footer = document.getElementsByTagName('footer');
-// footer = footer.
-// console.log(footer)
-//     if(true){
-//         footer.innerText = "It's a match!"
-//     }
-// }
+
 
 /*---------------------Test Area---------------------*/
 
