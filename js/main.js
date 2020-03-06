@@ -32,6 +32,7 @@ const crino = [
     // { name: 'womens-evening-dress', desc: 'https://imgur.com/XMMlhqY', img: 'https://imgur.com/8Jde8J5', id: 28 },
     // { name: 'womens-hair', desc: 'https://imgur.com/8QQyJj1', img: 'https://imgur.com/GzEIb6O', id: 29 },
 ];
+let backBlock = 'images/pixel-block.png'
 /*----- app's state (variables) -----*/
 let modal = document.getElementById("simpleModal")
 //let tile = document.getElementById('modal-content')
@@ -41,9 +42,7 @@ let index = 0;
 /*----- event listeners -----*/
 let box = document.getElementById("mainScreen").addEventListener('click', openModal);
 let closeBtn = document.getElementById('closeBtn').addEventListener('click', closeModal);
-let reset = document.getElementById('reset').addEventListener('click', shuffleCards)
-
-
+//document.querySelector('.reset').addEventListener('click', shuffleCards)
 /*----- functions -----*/
 //-------------------------------------------------------------------------------------  
 function openModal(event) {
@@ -103,11 +102,27 @@ function pushTag() {
         modalContainer[idx].appendChild(img);
         //console.log(img)
     });
-    //console.log(modalContainer)
+    console.log(modalContainer)
     return modalContainer;
 }
-pushTag()
+pushTag();
+document.getElementById().addEventListener('click', pushTag)
+function flipTiles(event){
+    let flip = event.target;
+    console.log(flip)
+}
 
+// function flipTiles(event){
+// let tileChange = event.target;
+// console.log(tileChange)
+// }
+// document.getElementsByClassName('.container').addEventListener("click", getMatch)
+// function getMatch(evt){
+// let click = evt.target;
+// console.log(click)
+
+// }
+//getMatch()
 //The player should be able to click on only 2 tiles every turn.  
 //If the image does not match the description, the game will notify the player
 //that they didn't get a match
