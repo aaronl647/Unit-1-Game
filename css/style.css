@@ -14,6 +14,7 @@
   h1, h2 {
     text-align: center;
   }
+
   #mainScreen{
     display: grid;
     grid-template-columns: repeat(4, 20vmin);
@@ -23,6 +24,7 @@
     padding: 50px 0 50px 0;
     font-size: 16px;
   }
+
   #mainScreen div {
     border: 3px solid lightcoral;
     text-align: center;
@@ -68,7 +70,6 @@
     display: grid;
     align-items: center;
     justify-content: space-evenly;
- 
   }
 
   img{

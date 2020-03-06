@@ -8,8 +8,18 @@
 5. If the description and the image do match, the tiles will stay flipped over
 6. The objective of the game is to match all the tiles together.
 
-# Screenshots
+## Screenshots
 ![Home Screen][Image1]
 ![Game Screen][Image2]
-[Image 1]:https://imgur.com/5V6YiDP "Home Screen"
-[Image 2]:https://imgur.com/3puWbO9 "Game Screen"
+[Image 1]:https://imgur.com/5V6YiDP.png "Home Screen"
+[Image 2]:https://imgur.com/3puWbO9.png "Game Screen"
+
+## Technologies Used
+* HTML
+* CSS
+* Javascript
+
+## Future Updates/ Stretch Goals 
+* Actually have the game working 
+* Hover feature over descriptions and images to read the text on the images
+* Have the score feature working

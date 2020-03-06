@@ -16,27 +16,11 @@ const crino = [
     { name: 'empress-eugenie', desc: 'https://imgur.com/TJcUhSw', img: 'https://imgur.com/seFJbE5', id: 12 },
     { name: 'frock-coat', desc: 'https://imgur.com/60DFluQ', img: 'https://imgur.com/fOWadta', id: 13 },
     { name: 'interchangeable-bodices', desc: 'https://imgur.com/kAxam9x', img: 'https://imgur.com/Dj02C34', id: 14 },
-    // { name: 'knickerbockers', desc: 'https://imgur.com/mJ8zysx', img: 'https://imgur.com/OV67tuM', id: 15 },
-    // { name: 'mitts', desc: 'https://imgur.com/piLf7WQ', img: 'https://imgur.com/IjOTlUK', id: 16 },
-    // { name: 'morning-coat', desc: 'https://imgur.com/DEDbHy1', img: 'https://imgur.com/nk7xcLo', id: 17 },
-    // { name: 'photography', desc: 'https://imgur.com/komvDPb', img: 'https://imgur.com/9Y8KWWe', id: 18 },
-    // { name: 'risk-of-fire', desc: 'https://imgur.com/WnVKf7E', img: 'https://imgur.com/QJlRZiS', id: 19 },
-    // { name: 'sack-jacket', desc: 'https://imgur.com/DaeVqYp', img: 'https://imgur.com/0GJrvLB', id: 20 },
-    // { name: 'sewing-machine', desc: 'https://imgur.com/iAsSHLu', img: 'https://imgur.com/uvkh5Pk', id: 21 },
-    // { name: 'spoon-bonnet', desc: 'https://imgur.com/aW1GUjl', img: 'https://imgur.com/H3U6Fac', id: 22 },
-    // { name: 'the-great-exhibition', desc: 'https://imgur.com/JI9Hb4a', img: 'https://imgur.com/VKLnhSd', id: 23 },
-    // { name: 'trousers', desc: 'https://imgur.com/Oq9H2Uf', img: 'https://imgur.com/iJX4IgJ', id: 24 },
-    // { name: 'wm-under', desc: 'https://imgur.com/6CcmWcQ', img: 'https://imgur.com/mGVrJVT', id: 25 },
-    // { name: 'womens-day-dress', desc: 'https://imgur.com/eldiMtt', img: 'https://imgur.com/MPWp2n4', id: 26 },
-    // { name: 'womens-dress', desc: 'https://imgur.com/SJNWBu3', img: 'https://imgur.com/6SBouPw', id: 27 },
-    // { name: 'womens-evening-dress', desc: 'https://imgur.com/XMMlhqY', img: 'https://imgur.com/8Jde8J5', id: 28 },
-    // { name: 'womens-hair', desc: 'https://imgur.com/8QQyJj1', img: 'https://imgur.com/GzEIb6O', id: 29 },
-];
+    ];
 var savedFlip = [];
 let backBlock = 'images/pixel-block.png'
 /*----- app's state (variables) -----*/
 let modal = document.getElementById("simpleModal")
-
 /*----- cached element references -----*/
 var cards = splitCards();
 /*----- event listeners -----*/
@@ -77,7 +61,6 @@ function splitCards() {
 //This function shuffles the previous array into a random order
 //And puts them into a shuffled array.
 function shuffleCards() {
-    //console.log('YEET')
     var shuffled = [];
     var i = splitCards().length;
     while (i > 0) {
@@ -87,7 +70,6 @@ function shuffleCards() {
         i -= 1;
         shuffled.push(card)
     }
-    //console.log(shuffled)
     return shuffled;
 }
 // shuffleCards()
@@ -104,7 +86,6 @@ function pushTag() {
         img.id = card.id;
         img.setAttribute('name', `${card.name}`);
         img.setAttribute('src', `${card.val}.png`);
-        //img.style.display = "none";
         modalContainer[idx].appendChild(img);
         pushImages.push(img)
     });
@@ -113,8 +94,6 @@ function pushTag() {
     //use the id to look into the cards variable
     //needs a global variable to hold what has been clicked 
     //needs to match global variable with the array
-    //document.getElementsByClassName('.container').addEventListener('click', cardCheck)
-    //console.log(pushImages)
     return modalContainer;
 }
 console.log(pushTag()[0])
@@ -136,65 +115,4 @@ function cardCheck(event) {
     }else{
         h3.innerText = "Try Again.";
     }
-    //change css to show the image
-    //get element id
-    //if first card flipped 
-    //save element to global
-    //else
-    //use this element id and global var to look into cards array to check if there's a match
-    //else 
-    //flip both cards 
-    //(using this element id and the last element id saved in global variable)
 }
-//every time the user clicks either a photo or a description will replace the contents
-//inside the div box. 
-cardCheck()
-//getMatch()
-//The player should be able to click on only 2 tiles every turn.  
-//If the image does not match the description, the game will notify the player
-//that they didn't get a match
-//If the player gets a match, the game will notify the player that they got a match
-//The tiles will be hidden from the board.
-
-
-
-
-// pop the first or last element and set that to the image. And then also remove img from the array
-
-
-
-
-
-/*---------------------Test Area---------------------*/
-
-
-/*---------------------Test Area---------------------*/
-
-
-
-
-/* When game starts()
-    - The game's main screen has several topics to choose from
-    - When the player clicks on one of the topics
-    - A window within the window opens up
-*Second screen()
-    - a grid shape of boxes with question marks
-    - The player has to match the description to the images
-        - when the player clicks on one its reveals either a description
-          or an image
-    - The player has to match all the tiles
-        when the player guesses wrong, the tile
-
-                    //Current objectives
-//Use the id key to make sure that the images and descriptions are both included in the randomization
-    // Make sure that the tiles DO NOT repeat themselves
-    // Make sure that both description and image are in the new object array
-//use the id key to identify that the two tiles match each
-//2. If the tiles do not match, they must flip back to the question marks
-    - Only 2 tiles can be pressed at a time.
-
-    -----------------Stretch Goals-----------------
-    - When the tile is pressed the photo will increase in size
-        - when you click on the image again it will minimize
-
-*/
