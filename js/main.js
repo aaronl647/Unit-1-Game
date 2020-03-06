@@ -38,10 +38,13 @@ let modal = document.getElementById("simpleModal")
 //let tile = document.getElementById('modal-content')
 
 /*----- cached element references -----*/
-let index = 0;
+var cards = splitCards();
+//console.log(cards)
 /*----- event listeners -----*/
 let box = document.getElementById("mainScreen").addEventListener('click', openModal);
 let closeBtn = document.getElementById('closeBtn').addEventListener('click', closeModal);
+document.getElementById('modal-content').addEventListener('click', flipTiles)
+document.getElementById('reset').addEventListener('click', shuffleCards)
 //document.querySelector('.reset').addEventListener('click', shuffleCards)
 /*----- functions -----*/
 //-------------------------------------------------------------------------------------  
@@ -60,10 +63,6 @@ function innerModal(evt) {
 function closeModal() {
     modal.style.display = "none";
 }
-
-//-------------------------------------------------------------------------------------  
-//This function splits the Crino Object and separates the descriptions from the images
-//And then puts them back together into a single array.
 function splitCards() {
     splitArray = [];
     crino.forEach(pair => {
@@ -73,9 +72,14 @@ function splitCards() {
     return splitArray;
 }
 
+//-------------------------------------------------------------------------------------  
+//This function splits the Crino Object and separates the descriptions from the images
+//And then puts them back together into a single array.
+
 //This function shuffles the previous array into a random order
 //And puts them into a shuffled array.
 function shuffleCards(click) {
+    //console.log('YEET')
     var shuffled = [];
     var i = splitCards().length;
     while (i > 0) {
@@ -92,7 +96,7 @@ function shuffleCards(click) {
 //This function should take the tags created 
 //and be stored in each of the divs in the grid
 function pushTag() {
-    let cards = shuffleCards();
+    let pushImages = [];
     var modalContainer = document.querySelectorAll('.container');
     cards.forEach(function (card, idx) {
         var img = document.createElement('img')
@@ -100,17 +104,30 @@ function pushTag() {
         img.setAttribute('name', `${card.name}`);
         img.setAttribute('src', `${card.val}.png`);
         modalContainer[idx].appendChild(img);
-        //console.log(img)
+        pushImages.push(img)
     });
-    console.log(modalContainer)
+    //console.log(pushImages)
     return modalContainer;
 }
-pushTag();
-document.getElementById().addEventListener('click', pushTag)
+
 function flipTiles(event){
+    var content = pushTag();
     let flip = event.target;
+    let clickCheck = false;
     console.log(flip)
+    // for(let i = 0; i < content.length; i++){
+    //     if(!clickCheck){
+    //         console.log('hello')
+    //     }else{
+    //         console.log('nope')
+    //     }
+    // }
+    
+    
+    //every time the user clicks either a photo or a description will replace the contents
+    //inside the div box. 
 }
+
 
 // function flipTiles(event){
 // let tileChange = event.target;
@@ -132,7 +149,7 @@ function flipTiles(event){
 
 
 
-//     // pop the first or last element and set that to the image. And then also remove img from the array
+// pop the first or last element and set that to the image. And then also remove img from the array
 
 
 
