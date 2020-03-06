@@ -11,5 +11,5 @@
 # Screenshots
 ![Home Screen][Image1]
 ![Game Screen][Image2]
-[Image 1]:(https://imgur.com/5V6YiDP)
-[Image 2]:(https://imgur.com/3puWbO9)
+[Image 1]:https://imgur.com/5V6YiDP "Home Screen"
+[Image 2]:https://imgur.com/3puWbO9 "Game Screen"
