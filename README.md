@@ -8,9 +8,7 @@
 6. The objective of the game is to match all the tiles together.
 
 ## Screenshots
-[Home Screen](https://imgur.com/5V6YiDP.png "Home Screen")
-[Game Screen](https://imgur.com/3puWbO9.png "Game Screen")
-
+Game Screen ![Game Screen](https://imgur.com/a/sOECugy)
 
 ## Technologies Used
 * HTML
@@ -18,6 +16,5 @@
 * Javascript
 
 ## Future Updates/ Stretch Goals 
-* Actually have the game working 
 * Hover feature over descriptions and images to read the text on the images
 * Have the score feature working
