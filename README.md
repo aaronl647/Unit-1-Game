@@ -10,7 +10,7 @@
 ## Screenshots
 Game Screen ![Game Screen](https://imgur.com/a/sOECugy)
 
-##Play [Here!](https://aaronl647.github.io/Unit-1-Game/)
+## Play [Here!](https://aaronl647.github.io/Unit-1-Game/)
 
 ## Technologies Used
 * HTML
