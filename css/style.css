@@ -1,99 +1,66 @@
-*, *::after, *::before {
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Raleway';
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  h1, h2 {
-    text-align: center;
-  }
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Spartan', sans-serif;
+}
 
-  #mainScreen{
-    display: grid;
-    grid-template-columns: repeat(4, 20vmin);
-    grid-template-rows: repeat(2, 20vmin);
-    grid-column-gap: 3vmin;
-    grid-row-gap: 3vmin;
-    padding: 50px 0 50px 0;
-    font-size: 16px;
-  }
+body{
+	height: 100%;
+	width: 100%;
+	margin: auto;
+	background: rgb(155, 155, 155);
+	display: block;
+}
+h1{
+	text-align: center;
+	font-size: 50px;
+	display: flex;
+	justify-content: center;
+}
+.memory-game{
+	width: 640px;
+	height: 640px;
+	margin: auto;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	perspective: 1000px;
+	float: left;
+}
 
-  #mainScreen div {
-    border: 3px solid lightcoral;
-    text-align: center;
-    padding: 55px 0 20px 0;
-    cursor: pointer;
-  }
-  
-  .modal{
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    overflow: auto;
-    align-items: center;
-    background-color: rgba(0,0,0,0.5);
-  }
+.card{
+	width: 30%;
+	height: 30%;
+	margin: 5px;
+	position: relative;
+	transform: scale(1);
+	transform-style: preserve-3d;
+	transition: transform .5s;
+	
+}
 
-  #modal-content{
-    display: grid;
-    background-color: #eee;
-    margin: auto;
-    padding: 20px 0 20px 40px; 
-    width: auto;
-    height: auto;
-    grid-template-columns: repeat(6, 15vmin);
-    grid-template-rows: repeat(6, 15vmin);
-    grid-column-gap: 2vmin;
-    grid-row-gap: 2vmin;
-    justify-content: space-evenly;
-    font-weight: bold;
-    }
-    
-  #modal-content div{
-    border: 3px solid lightblue;
-    /* background-color: orange; */
-    text-decoration-color: white;
-    font-size: 45px;
-    text-align: center;
-    cursor: pointer;  
-    display: grid;
-    align-items: center;
-    justify-content: space-evenly;
-  }
+.card:active{
+	transform: scale(.97);
+	transition: transform .2s;
+}
 
-  img{
-    max-width:100%;
-    max-height:100%;
-  }
+.card.flip{
+	transform: rotateY(180deg);
+}
 
-  footer{
-    text-align: center;
-    justify-content: flex-end;
-    display: flex ;
-  }
+.front,
+.back{
+	width: 100%;
+	height: 100%;
+	border-radius: 5px;
+	position: absolute;
+	border: 2 solid pink;
+	backface-visibility: hidden;
+}
 
-  button{
-    justify-content: flex-end;
-    display: flex;
-  }
+.front{
+	transform: rotateY(180deg);
+}
 
-  div#hidden{
-    border: 3px solid #eee;
-  }
 
-  h3{
-   display: flex;
-   justify-content: center;
-   align-content: center;
-  }
